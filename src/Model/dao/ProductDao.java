@@ -8,18 +8,18 @@ import java.util.NoSuchElementException;
 
 public class ProductDao {
     // get all products
-    public static List<Product> findAllProducts() {
+    public List<Product> findAllProducts() {
         return ProductData.products;
     }
 
     // add products
-    public static Product addNewProduct (Product newProduct) {
+    public Product addNewProduct (Product newProduct) {
         ProductData.products.add(newProduct);
         return newProduct;
     }
 
     // find product by uuid
-    public static Product findProductByUuid(String uuid) {
+    public Product findProductByUuid(String uuid) {
         return ProductData.products
                 .stream()
                 .filter(p->p.getUuid().equals(uuid))
@@ -28,7 +28,7 @@ public class ProductDao {
     }
 
     // delete product by uuid
-    public static int deleteProductByUuid(String uuid) {
+    public int deleteProductByUuid(String uuid) {
         try {
             Product findProduct = findProductByUuid(uuid);//this statement to find a product by uuid
             //if product is exiting it remove
