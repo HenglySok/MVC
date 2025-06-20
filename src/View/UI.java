@@ -3,6 +3,7 @@ package View;
 import Controller.ProductController;
 import Model.Product;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -56,14 +57,18 @@ public class UI {
                             );
                 }
                 case 5 -> {
-                    System.out.println("[+]: Edit Product by UUID");
-                    System.out.print("- Enter uuid: ");
-                    String uuid = (new Scanner(System.in).nextLine());
-                    System.out.print("- Enter new name: ");
-                    String newName = (new Scanner(System.in).nextLine());
-                    System.out.print("- Enter new qty: ");
-                    int newQty = (new Scanner(System.in).nextInt());
-                    ProductController.updateProductByUuid(uuid, newName, newQty);
+                    try {
+                        System.out.println("[+]: Edit Product by UUID");
+                        System.out.print("- Enter uuid: ");
+                        String uuid = (new Scanner(System.in).nextLine());
+                        System.out.print("- Enter new name: ");
+                        String newName = (new Scanner(System.in).nextLine());
+                        System.out.print("- Enter new qty: ");
+                        int newQty = (new Scanner(System.in).nextInt());
+                        ProductController.updateProductByUuid(uuid, newName, newQty);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Invalid Input " + e.getMessage());
+                    }
                 }
                 case 6 -> {
                     return;

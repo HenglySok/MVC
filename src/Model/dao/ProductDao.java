@@ -3,6 +3,7 @@ package Model.dao;
 import Model.Product;
 import Model.reposity.ProductData;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -43,10 +44,14 @@ public class ProductDao {
         return 1;
     }
     public void updateProductByUuid(String uuid, String newName, int newQty) {
-        Product findProduct = findProductByUuid(uuid);
-        if (findProduct != null) {
-            findProduct.setName(newName);
-            findProduct.setQty(newQty);
+        try {
+            Product findProduct = findProductByUuid(uuid);
+            if (findProduct != null) {
+                findProduct.setName(newName);
+                findProduct.setQty(newQty);
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Invalid Input " + e.getMessage());
         }
     }
 }
