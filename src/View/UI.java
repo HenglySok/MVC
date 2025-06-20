@@ -14,7 +14,8 @@ public class UI {
                2. Find Product by UUID
                3. Delete Product by UUID
                4. Add New Product
-               5. Exit
+               5. Edit Product by UUID
+               6. Exit
                """);
     }
     public static void Home() {
@@ -29,7 +30,7 @@ public class UI {
                     System.out.println(ProductController.getAllProducts());
                 }
                 case 2 -> {
-                    System.out.print("[+]: Find Product by UUID");
+                    System.out.println("[+]: Find Product by UUID");
                     System.out.print("- Enter uuid: ");
                     System.out.println(
                             ProductController.getProductByUuid(new Scanner(System.in).nextLine())
@@ -55,6 +56,16 @@ public class UI {
                             );
                 }
                 case 5 -> {
+                    System.out.println("[+]: Edit Product by UUID");
+                    System.out.print("- Enter uuid: ");
+                    String uuid = (new Scanner(System.in).nextLine());
+                    System.out.print("- Enter new name: ");
+                    String newName = (new Scanner(System.in).nextLine());
+                    System.out.print("- Enter new qty: ");
+                    int newQty = (new Scanner(System.in).nextInt());
+                    ProductController.updateProductByUuid(uuid, newName, newQty);
+                }
+                case 6 -> {
                     return;
                 }
                 default -> {

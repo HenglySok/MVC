@@ -23,4 +23,8 @@ public class ProductController {
     public static int deleteProductByUuid(String uuid) {
         return productDao.deleteProductByUuid(uuid);
     }
+
+    public static void updateProductByUuid(String uuid, String newName, int newQty) {
+        productDao.updateProductByUuid(uuid, newName, newQty);
+    }
 }

@@ -5,6 +5,7 @@ import Model.reposity.ProductData;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class ProductDao {
     // get all products
@@ -40,5 +41,12 @@ public class ProductDao {
             return 0;
         }
         return 1;
+    }
+    public void updateProductByUuid(String uuid, String newName, int newQty) {
+        Product findProduct = findProductByUuid(uuid);
+        if (findProduct != null) {
+            findProduct.setName(newName);
+            findProduct.setQty(newQty);
+        }
     }
 }
